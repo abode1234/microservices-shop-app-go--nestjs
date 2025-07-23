@@ -27,24 +27,6 @@
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
-    },
-    "billing-app": {
-      "type": "application",
-      "root": "apps/billing-app",
-      "entryFile": "main",
-      "sourceRoot": "apps/billing-app/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/billing-app/tsconfig.app.json"
-      }
-    },
-    "product": {
-      "type": "application",
-      "root": "apps/product",
-      "entryFile": "main",
-      "sourceRoot": "apps/product/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/product/tsconfig.app.json"
-      }
     }
   }
 }

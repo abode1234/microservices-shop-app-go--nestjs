@@ -1,0 +1,104 @@
+built the shop application using nestjs  and golang 
+
+    the project structure is as follows
+
+├── api-gateway
+│   ├── src
+│   │   ├── app.controller.spec.ts
+│   │   ├── app.controller.ts
+│   │   ├── app.module.ts
+│   │   ├── app.service.ts
+│   │   └── main.ts
+│   ├── test
+│   │   ├── app.e2e-spec.ts
+│   │   └── jest-e2e.json
+│   └── tsconfig.app.json
+├── auth
+│   ├── src
+│   │   ├── auth.controller.spec.ts
+│   │   ├── auth.controller.ts
+│   │   ├── auth.module.ts
+│   │   ├── auth.service.ts
+│   │   └── main.ts
+│   ├── test
+│   │   ├── app.e2e-spec.ts
+│   │   └── jest-e2e.json
+│   └── tsconfig.app.json
+└── products
+    ├── cmd
+    │   └── main.go
+    ├── go.mod
+    ├── internal
+    └── pkg
+
+1- build the api-gateway project
+ -- Set up base NestJS HTTP server (main.ts)
+
+ -- Configure REST routes (e.g. /auth/login, /products)
+
+ -- Add validation, DTOs, exception filters, logging, etc.
+
+ -- Add Kafka client (or TCP transport) to communicate with microservices
+
+ -- Implement middleware/guards to verify JWT
+
+ -- Forward requests to Auth / Products based on routes
+
+2- build the auth microservice
+
+ -- Use @nestjs/microservices with Kafka transport (or TCP)
+
+ -- Create modules: AuthModule, JwtStrategy, UserService, etc.
+
+ -- Implement:
+
+ POST /register
+
+ POST /login
+
+ GET /me
+
+ -- Emit events (e.g. user.created) to Kafka (or other transport)
+
+ -- Handle token signing/verification (JWT)
+
+ -- Create guards (e.g. JwtAuthGuard)
+
+
+3- build the products microservice
+
+ -- Setup Go module & folder structure
+
+ cmd/main.go
+
+ internal/
+
+ pkg/
+
+ -- Choose transport layer (Kafka consumer/producer or HTTP/gRPC server)
+
+ -- Implement domain logic in internal/products
+
+ -- Implement REST or message handlers
+
+ If using Kafka:
+
+ -- Consume events like user.created
+
+ -- Produce events like product.created
+
+4- Set Up Kafka Infrastructure (Docker)
+
+ -- Create docker-compose.yml with:
+
+ Kafka
+
+ Zookeeper
+
+ Kafka UI (e.g. kafdrop or redpanda-console)
+
+ Define topics:
+
+ -- user.created
+
+ -- product.created
